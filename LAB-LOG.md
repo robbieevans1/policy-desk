@@ -321,3 +321,71 @@ deferred decisions preserved. That confirmation records lab completion only:
 the PRD remains a draft, and the actual Finalize gate remains blocked. No
 stakeholder sign-off, test result, pilot consent, or production readiness is
 claimed.
+
+### SMART evidence supplementation and Finalize rerun — 2026-10-07
+
+Added a dimension-by-dimension evidence matrix for GOAL-001 through GOAL-003
+to the PRD, with transcript timestamps. It records conditional generation
+feasibility, existing policy citations and logging, assigned prototype/test
+inputs, tentative pilot timing, review-before-delivery, and the first
+model-risk review evidence checkpoint. It distinguishes these from measured
+results and committed delivery dates. No new targets or approvals were added.
+
+The reviewer first assessed the matrix at 2026-10-07T17:48:00Z
+(`PRD-001-quality-20261007T174800Z`) against PRD version 0.1.2. That actual
+verdict was `FAIL`, with 2 RISK, 7 CAUTION, and 17 COVERED findings;
+`finalize_exit` was `BLOCKED`. A follow-up Finalize assessment of version
+0.1.3 completed at 2026-10-07T17:49:06Z
+(`PRD-001-quality-20261007T174906Z`) and returned `FAIL` with the same
+2 RISK, 7 CAUTION, and 17 COVERED counts; both `validate_exit` and
+`finalize_exit` are `BLOCKED`. It confirms GOAL-002 passes SMART, while
+GOAL-001 and GOAL-003 remain SMART failures. Conditional Achievable
+plausibility for GOAL-001 and GOAL-003 is not proof of end-to-end feasibility.
+
+The reviewer treated GOAL-002's review-before-delivery boundary as time-bound
+for each delivered brief, not as a capability rollout date. The first
+model-risk review for GOAL-003 is an evidence checkpoint, not a correction
+measurement window or implementation deadline. GOAL-001's late-December
+pilot-trigger estimate remains tentative and does not establish a deadline for
+the under-45-minute effort outcome. GOAL-001 therefore remains at risk on
+Time-bound. GOAL-003 names correction frequency as its intended measure; the
+missing evidence is its counting unit, denominator, and measurement period,
+not a success-rate target. No correction measurement window or delivery
+deadline is supplied.
+
+The PRD wording was clarified and its version advanced to 0.1.3 so it no
+longer says the matrix is still awaiting review. The follow-up review assessed
+that exact revision. No unstated target or approval was added to obtain a
+passing gate. Lab completion remains distinct from organizational approval or
+production readiness.
+
+### Pilot measurement clarification and Validate/Finalize rerun — 2026-10-07
+
+The user subsequently defined the pilot measures for GOAL-001 and GOAL-003.
+GOAL-001 uses recorded Tier 1 preparation time, including analyst review,
+during the first 30 calendar days of an approved pilot, with under 45 minutes
+as the target and achievability pending evaluation. GOAL-003 establishes a
+baseline percentage: analyst-reviewed briefs with at least one substantive
+factual correction divided by all analyst-reviewed briefs, multiplied by 100;
+count each brief once, measure the same 30 calendar days, and report at the
+conclusion. No correction-rate threshold is imposed. These are user-confirmed
+PRD definitions, not transcript statements, pilot consent, test evidence, or
+organizational sign-off.
+
+The Validate assessment of PRD v0.1.4 completed at 2026-10-07T17:57:07Z
+(`PRD-001-quality-20261007T175707Z`) returned `NEEDS_REVIEW` with
+`validate_exit: APPROVED_WITH_COMMENTS`: 0 RISK, 7 CAUTION, 4 COVERED, and
+0 NOT_APPLICABLE. All three goals passed SMART with the updated definitions.
+Traceability remained 25/25 FR-to-AC and 25/25 FR-to-goal; these are linkage
+figures, not test results.
+
+The Finalize assessment of the same revision completed at 2026-10-07T18:01:31Z
+(`PRD-001-quality-20261007T180131Z`) returned `NEEDS_REVIEW` with
+`validate_exit: APPROVED_WITH_COMMENTS` and `finalize_exit: BLOCKED`; counts
+were 0 RISK, 7 CAUTION, 4 COVERED, and 0 NOT_APPLICABLE. The reviewer
+confirmed all three goals pass SMART. Finalize remains blocked because no
+authorized PRD approval, approval date, required reviewers, or sign-off
+authority is recorded. Lab completion does not supply those approvals. No
+regression result is asserted because no passing review baseline exists.
+Pilot consent/start, feasibility evaluation, production readiness, and the
+transcript-deferred scope, source, cost, and Records decisions remain open.

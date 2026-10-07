@@ -1,15 +1,15 @@
 ---
 prd_id: "PRD-001"
 title: "policy-desk Vendor Renewal Risk Brief"
-description: "Transcript-grounded draft requirements and unresolved decisions for the vendor renewal risk brief."
+description: "Transcript-grounded draft requirements, unresolved decisions, and user-confirmed pilot measurement definitions for the vendor renewal risk brief."
 status: "draft"
-version: "0.1.2"
+version: "0.1.4"
 owners: ["Priya Raman (sponsor; PRD approval authority not established)"]
 reviewers: []
 created_date: "2026-10-07"
 last_updated: "2026-10-07"
 product_goal_ids: ["GOAL-001", "GOAL-002", "GOAL-003"]
-product_goal_smart_status: "deferred"
+product_goal_smart_status: "passed"
 fr_to_ac_coverage_threshold_pct: 80.0
 fr_to_goal_coverage_threshold_pct: 100.0
 diagram_format: "none"
@@ -113,11 +113,35 @@ Scope alternatives and proposed cost limits are not decisions. They remain OQ-00
 
 | ID       | Transcript-grounded goal                                                                         | Measure and target                                                                           | Evidence      |
 | -------- | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- | ------------- |
-| GOAL-001 | Reduce Tier 1 brief preparation effort, including analyst review                                 | Approximate three-hour baseline to under 45 minutes; time records to be supplied by Priya    | E15, E18, E20 |
+| GOAL-001 | Reduce Tier 1 brief preparation effort, including analyst review                                 | Approximate three-hour baseline to under 45 minutes during the first 30 calendar days of the approved pilot; record Tier 1 preparation time including review | E15, E18, E20; user-confirmed pilot measurement definition (2026-10-07) |
 | GOAL-002 | Give business owners a cited, reviewed view of renewal impediments without making their decision | Every substantive statement cited; analyst review before delivery; no renewal recommendation | E02, E10, E16 |
-| GOAL-003 | Preserve evidence of model inputs and analyst corrections so correction frequency can be measured | Record what the model saw, preserve before/after edits, and measure how often analysts correct output; correction threshold, protocol, achievability, and time horizon are undecided | E13-E14 |
+| GOAL-003 | Preserve evidence of model inputs and analyst corrections so correction frequency can be measured | Establish the pilot baseline as corrected briefs divided by analyst-reviewed briefs, multiplied by 100, over the same 30-day pilot; count each brief once; no correction-rate threshold | E13-E14; user-confirmed pilot measurement definition (2026-10-07) |
 
-SMART status is deferred. Quantified time and generation targets exist, but baseline verification, measurement protocol, achievability evidence, and release horizon remain unresolved. No deadline or correction-rate target is invented.
+The evidence below distinguishes transcript evidence from the user's subsequent pilot measurement definitions, conditional feasibility rationale, event-relative acceptance boundaries, and unresolved evidence. The first 30 calendar days begin with an approved pilot; no pilot start date or consent is established here. The correction percentage is a baseline measure, not a success threshold. No completed test, approved release date, or blanket SMART pass is claimed; the independent Finalize assessment is recorded in the lab log.
+
+### SMART evidence by goal
+
+All timestamps refer to the [kickoff transcript](../meetings/renewal-kickoff-transcript.md). Evidence of an existing capability or a proposed validation action supports a feasibility rationale; it is not a measured result for this new capability.
+
+| Goal | Dimension | Transcript evidence and its limits |
+| --- | --- | --- |
+| GOAL-001 | Specific | Reduce Tier 1 renewal assembly effort, including analyst review; analysts should check rather than rewrite (00:29:05-00:29:55; E15). |
+| GOAL-001 | Measurable | Approximate baseline: three hours. Target: under 45 minutes including review, measured from recorded Tier 1 preparation time during the first 30 calendar days of the approved pilot (user-confirmed pilot measurement definition, 2026-10-07). The transcript says time is logged against renewal cases and Priya can retrieve it (00:29:05-00:30:05; 00:44:39-00:44:51; E15, E20); the separate generation target is under two minutes, excluding review (00:21:04; E12). The baseline extract and pilot records are not supplied. |
+| GOAL-001 | Achievable | Tom considers under-two-minute generation doable if data is local, but requires measurement for live APIs (00:21:12; E12). A nightly CSV exists, a one-vendor prototype is assigned to Tom, and Priya offers the baseline and 10-15 historical reviews for testing (00:15:50-00:16:19; 00:39:53-00:40:36; E11, E18). This is conditional support for generation feasibility and a route to testing; it does not prove the end-to-end 45-minute target. Achievability remains pending evaluation. |
+| GOAL-001 | Relevant | Addresses repeated analyst assembly work and late discovery of renewal impediments (00:00:21-00:00:57; E01). |
+| GOAL-001 | Time-bound | Measure during the first 30 calendar days of the approved pilot (user-confirmed pilot measurement definition, 2026-10-07). The pilot start date and consent remain unconfirmed. The transcript's proposed card-processor pilot has a tentative end-of-May expiry and late-December brief trigger (00:39:08-00:39:41; E18); Lena is asked to confirm expiry and consent (00:40:36-00:40:59). Those are not confirmed dates. |
+| GOAL-002 | Specific | Deliver a source-cited brief checked by an analyst before business-owner delivery, without recommending renewal (00:02:01-00:02:27; 00:12:46-00:13:31; 00:33:03; E02, E10, E16). |
+| GOAL-002 | Measurable | Every substantive statement must cite a policy or source record; uncitable claims are omitted. Both scheduled and on-demand briefs require analyst review, and briefs must not recommend renewal (same timestamps). These are per-statement and per-brief acceptance standards; no observed compliance rate is supplied. AC-013 and AC-015 capture review and citation checks. |
+| GOAL-002 | Achievable | Tom reports that policy citations already exist, while source-record citations are new (00:02:22; E02). Priya defines the analyst checking/correction workflow and Lena accepts it (00:12:46-00:13:20; E10). Historical reviews are offered for testing (00:40:36; E18). These provide a starting capability, agreed workflow, and proposed evaluation material, not proof that record citations and review enforcement work. |
+| GOAL-002 | Relevant | Gives the business owner evidence of renewal blockers while preserving the owner's decision authority (00:00:57; 00:32:57-00:33:16; E01, E16). |
+| GOAL-002 | Time-bound | Analyst checking and correction must occur before each brief reaches the business owner (00:12:46-00:13:31; E10). This establishes an event-relative acceptance boundary, not a calendar deadline for delivering the capability. The pilot timing remains tentative (E18). |
+| GOAL-003 | Specific | Preserve what the model saw and the before/after analyst edits so the team can investigate omissions and measure corrections (00:22:20-00:22:52; 00:24:14-00:24:20; E13-E14). |
+| GOAL-003 | Measurable | Priya wants to know how often analysts correct output, with before/after edits as supporting evidence (00:24:14-00:24:20; E14). The user subsequently defined the pilot baseline as the percentage of analyst-reviewed briefs with at least one substantive factual correction: corrected briefs divided by all analyst-reviewed briefs, multiplied by 100; count each brief once, measure over the same 30 calendar days, and report at its conclusion (user-confirmed pilot measurement definition, 2026-10-07). This defines a baseline, not a correction-rate threshold. FR-017 and AC-017 capture preservation of the two versions. |
+| GOAL-003 | Achievable | Tom reports existing logging of retrieved documents and prompts and proposes extending it to source records (00:22:52; E13). Dana is assigned to send logging requirements by Friday (00:40:26-00:40:32; E18). Existing logging provides an extension point; edit capture, source-record coverage, and long-term evidence retrieval are not demonstrated. |
+| GOAL-003 | Relevant | Supports investigation of whether a finding was presented to the model and supplies model-risk evaluation evidence (00:22:20; 00:24:53-00:25:12; E13-E14). The latter statement is attributed to Dana following the transcript correction. |
+| GOAL-003 | Time-bound | Measure the correction baseline over the same first 30 calendar days of the approved pilot and report it at the pilot-period conclusion (user-confirmed pilot measurement definition, 2026-10-07). The start date remains conditional on pilot approval. Dana says model risk will request evaluation evidence at the first review (00:24:53-00:25:12; E14); this remains an additional event-relative checkpoint, not the measurement window. The Friday logging write-up is an input deadline, not a delivery deadline for this goal. |
+
+Remaining evidence needs are the retrieved time baseline and pilot records; evaluation of end-to-end effort, citation/review behavior, and evidence capture; confirmed pilot consent and start date; and validation that the correction evidence supports the specified denominator and substantive-factual-correction classification. Records reconciliation remains separate and unresolved. These gaps must not erase the conditional and event-relative evidence above, nor may that evidence be promoted to completed validation.
 
 ## Functional Requirements
 
@@ -342,10 +366,10 @@ Negotiation drafting is a later idea, not a v1 requirement. All-tier expansion i
 
 | Goal     | Measurement                                     | Baseline                                                              | Target                                                                    | Window/source and unresolved details                                                             |
 | -------- | ----------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| GOAL-001 | Tier 1 assembly effort including analyst review | Approximately three hours                                              | Under 45 minutes                                                          | Renewal-case time records; Priya to retrieve baseline; measurement details and horizon remain open |
+| GOAL-001 | Tier 1 assembly effort including analyst review | Approximately three hours                                              | Under 45 minutes during the first 30 calendar days of the approved pilot  | Record Tier 1 preparation time including review; transcript says Priya can retrieve time records; user confirmed pilot window (2026-10-07). Pilot approval/start and evaluation remain unconfirmed. |
 | GOAL-001 | Generation duration excluding analyst review    | No brief-generation baseline                                          | Under 120 seconds                                                         | Generation measurement boundary, load, and percentile open in OQ-008                             |
 | GOAL-002 | Statement citation and review compliance        | Not stated in the transcript                                         | Every substantive statement supported; review before delivery; no renewal recommendation | AC-013/AC-015; measurement population and review evidence mechanics open |
-| GOAL-003 | What the model saw and analyst correction frequency | Not supplied                                                          | Record what the model saw; preserve before/after analyst edits; measure correction frequency. Threshold, protocol, achievability, and time horizon are undecided. | Evidence detail and retention remain OQ-004/OQ-011; measurement protocol and threshold remain OQ-009 |
+| GOAL-003 | Percentage of analyst-reviewed briefs with at least one substantive factual correction | Not supplied; establish baseline during the pilot | Corrected briefs / all analyst-reviewed briefs x 100; count each brief once; no correction-rate threshold | Measure over the same first 30 calendar days of the approved pilot and report at its conclusion (user-confirmed, 2026-10-07). Evidence detail and retention remain OQ-004/OQ-011; define checking versus rewriting beyond this measure in OQ-009. |
 
 Priya said she would supply 10-15 past renewal reviews for testing. The transcript does not establish a test split, passing score, evaluation cadence, or approval rubric; no test result is claimed. [E18, E20]
 
@@ -413,7 +437,7 @@ Probability and severity were not rated in the transcript and are left unassesse
 | RISK-003 | Transcript cites seven-year renewal records and shorter proposed model-log periods | Treatment of generated briefs, model-input evidence, and analyst-edit evidence over the renewal-record lifecycle is unresolved | Records consultation is explicitly unowned; OQ-004 |
 | RISK-004 | Contact data previously leaked through an automated export              | Brief/source handling could expose inappropriate contact data  | Explicit brief exclusions are NFR-002; broader source-field boundaries and the possible shared vendor-master data path remain OQ-010 |
 | RISK-005 | Missing/stale sources can look like no risk                             | Business owner could misunderstand evidence gaps         | Explicit missing-source behavior; FR-016                   |
-| RISK-006 | Analysts rewrite output instead of checking it                          | Time/quality goal fails                                  | Preserve edits; FR-017; threshold OQ-009                   |
+| RISK-006 | Analysts rewrite output instead of checking it                          | Time/quality goal fails                                  | Preserve edits; FR-017; OQ-009                              |
 | RISK-007 | Pilot runway is tight if data access is not sorted                      | Tentative late-December trigger may not be achievable    | Lena confirmation and source-access actions; OQ-005        |
 
 ## Open Questions
@@ -430,7 +454,7 @@ All entries are Open. Where the transcript does not assign a decision owner, the
 | OQ-006 | Where do original-award value, proposed renewal value, and sole-source justification come from? What happens at exactly $250,000 or when inputs are missing?                             | Crossing rule agreed; export fields insufficiently specified; E04, E11                   | Unassigned                                                                   |
 | OQ-007 | What makes a source current? Which date anchors the 12-month incident interval? What should happen with fewer than four scorecards, conflicting records, or an unknown last-review date? | Source-gap principle agreed, definitions absent; E05-E07, E16                            | Unassigned                                                                   |
 | OQ-008 | Under what load and percentile is under-two-minute generation measured, and do fetch/queue/retry time count? What concurrency/capacity is required?                                      | Target stated; feasibility depends on source design; E10, E12                            | Unassigned                                                                   |
-| OQ-009 | How are analyst effort, correction frequency, and "checking versus rewriting" measured? What sample/aggregation and quality threshold determine success?                                 | Time baseline and edits requested; protocol absent; E14-E15, E18, E20                    | Priya supplies baseline/reviews; measurement decisions unassigned            |
+| OQ-009 | Beyond recorded Tier 1 effort and the defined correction-prevalence baseline, how should "checking versus rewriting" and brief quality be assessed? | Pilot measures defined by user; broader quality assessment remains undecided; E14-E15, E18, E20 | Priya supplies baseline/reviews; remaining quality decision owner unassigned |
 | OQ-010 | Which source fields are needed for the brief and model input, beyond the explicit contact-data exclusions? Is the vendor-master extraction path the same one involved in the prior contact-data leak? | Source-field boundary and lineage are unknown; E07, E19 | Unassigned |
 | OQ-011 | What record-level evidence and source identity/version detail are needed to establish what the model saw and relate that evidence to before/after analyst edits? What evidence format and telemetry approach should be used? | Transcript requires knowing what the model saw and preserving edits, but does not define evidence granularity, format, or telemetry; E13-E14 | Dana was to send logging requirements to Tom; no decision owner for the unresolved detail was assigned |
 | OQ-012 | Who assigns analysts and operates scheduled generation? How are completion, delivery, failures, retries, duplicate requests, and re-runs handled; where is the capability deployed?      | Common review path decided, operational mechanisms absent; E03, E10-E11                  | Unassigned                                                                   |
