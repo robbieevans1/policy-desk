@@ -593,3 +593,21 @@ Unsourced assumptions and decisions still needed:
 Checkpoint: the plan defines the PRD's generation measurement, preserves
 cost as an open question, and separates the all-tier estimate from its
 Tier 1/2 subset. No load tests were run.
+
+## Exercise 6 - Backlog planning
+
+Plan and handoff: `.copilot-tracking/github-issues/prds/vendor-renewal-risk-brief/`.
+Read-only discovery found no existing issues or pull requests. The eight
+proposed issues map all PRD requirements and open questions; the plan is
+flattened because issue types, labels, and sub-issue support were unavailable
+for validation.
+
+Published the existing main history to the public repository after the user
+confirmed this destination. No issue titles or bodies were published.
+
+Dry run: Not performed. The handoff remains behind its unchecked human-review
+gate, GitHub create requires a validated label, and this context exposes no
+GitHub write operations.
+
+Live outcome: No issues were created. The handoff awaits human review and label
+validation. Issues URL: None.
