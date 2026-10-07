@@ -193,8 +193,131 @@ authorized access-control decision or approval owner is available. The
 reviewer also scored the core `unambiguous` and `singular` attributes below
 their minimum threshold; related scope and operating questions remain open.
 
-The transcript-backed privacy update is now covered by the reviewer, while
-broader data handling and retention remain a CAUTION. The approved source
-boundary prevents resolving the security blocker in this exercise. Keep
-OQ-010/OQ-011 open, mark the affected requirement Needs validation, and do not
-enter Finalize or claim approval.
+At the time of that rerun, the transcript-backed privacy update was covered,
+while broader data handling and retention remained a CAUTION. No additional
+stakeholder decision had yet been supplied, so the security blocker remained
+open. The subsequent SD-001 decision and PRD changes are recorded below and
+require a fresh quality review.
+
+### Superseded scope expansion from an earlier review
+
+Historical record only. The following non-transcript requirements were added
+after an earlier review, but the user's later lab-scope instruction superseded
+them for the current PRD. They are not current requirements or transcript
+evidence.
+
+On 2026-10-07, Robert explicitly supplied the following additional
+stakeholder decision in this chat for the exercise. It is recorded as SD-001
+in the PRD and is not attributed to the kickoff transcript:
+
+* Require authenticated organizational identities; restrict source records
+  and briefs to assigned procurement/risk-management staff; only designated
+  source owners may modify source records; brief readers must be authorized
+  for every source used.
+* Restrict audit evidence to designated auditors and security staff. Allow
+  application identities to append audit events but not alter or delete
+  existing events.
+* Encrypt source records, briefs, and audit evidence at rest and in transit.
+  Use managed identities and least-privilege service permissions. Prohibit
+  anonymous access and external sharing.
+* Minimize data. Include only information needed for renewal assessment and
+  exclude credentials and unnecessary personal information from briefs/logs.
+* Record source-record access, brief generation, export, permission changes,
+  and deletion with actor, timestamp, action, affected record identifiers,
+  and outcome. Protect audit evidence from tampering.
+* Retain briefs and audit evidence for 12 months, then delete automatically
+  unless a documented legal hold applies. Do not change source records'
+  existing approved retention schedule.
+* Before release, test unauthorized-access denial, source-permission
+  enforcement, audit integrity, encryption configuration, and retention
+  deletion.
+
+The PRD records the requirements as NFR-005-NFR-018 with linked acceptance
+criteria AC-019-AC-032, in addition to the transcript-backed contact-data
+exclusions. FR-004 and FR-008 were decomposed to address the prior review's
+singularity concern; FR-019-FR-025 and AC-036-AC-042 carry the separated
+threshold and approval behaviors. The PRD now has 25 functional requirements,
+18 non-functional requirements, 42 acceptance criteria, and 16 open
+questions. The 12-month retention decision does not itself reconcile the
+seven-year record schedule and the transcript's proposed log periods; OQ-004
+remains open. Robert's decision is not overall PRD sign-off.
+
+### Current-revision Validate review and Finalize entry
+
+The PRD Quality Reviewer assessed the 2026-10-07 14:54:28Z revision
+(`PRD-001-quality-20261007T145428Z`). The actual report returned
+`NEEDS_REVIEW`, with 0 RISK, 15 CAUTION, 17 COVERED, and 0 NOT_APPLICABLE
+findings. Its gate decision is `validate_exit: APPROVED_WITH_COMMENTS` and
+`finalize_exit: NOT_EVALUATED`. The report records 25/25 FR-to-AC and
+FR-to-goal coverage, with no waiver required.
+
+The reviewer clarified an inconsistency in the report notes: the score
+minimum of 2 applies to the four core attributes—necessary (3), unambiguous
+(2), singular (2), and verifiable (2). Complete scores 1, but is not a core
+attribute and remains a CAUTION; it does not block Validate exit. Thus
+Validate exit is authorized with comments, not overall PRD approval.
+OQ-004 and the review's other cautions remain open; no unanswered decisions
+have been inferred.
+
+### Finalize review
+
+The PRD Quality Reviewer assessed the exact current Finalize artifact at
+2026-10-07 14:57:48Z (`PRD-001-quality-20261007T145748Z`). The report returned
+`overall_status: FAIL`, with 4 RISK, 12 CAUTION, 17 COVERED, and 0
+NOT_APPLICABLE findings. Its actual gate decision is
+`finalize_exit: BLOCKED`; `validate_exit` is `NOT_EVALUATED` in this
+Finalize-phase report. The four HIGH RISK findings are that all three
+product goals fail the required SMART check and that overall PRD approval,
+approval date, and required reviewer roles/sign-offs are absent.
+
+No passing review baseline exists, so the reviewer could not establish
+regression drift and asserted no regression. It did confirm 25/25 FR-to-AC
+and FR-to-goal coverage and that `complete: 1` is a non-core caution, not a
+core-attribute threshold breach. OQ-004 remains open. Finalize exit is
+blocked; do not mark this PRD approved or finalized. The goal evidence and
+approval decisions remain for the appropriate stakeholders; no targets,
+dates, or sign-offs have been invented.
+
+### Lab-scope Validate rerun and completion disposition
+
+The current PRD is version 0.1.2. For this rerun, the PRD Quality Reviewer
+received the Exercise 1 scope from `cp-README.md`, the transcript-only evidence
+boundary, and the user's instruction to preserve deferred decisions without
+claiming organizational or production approval.
+
+The Validate review completed at 2026-10-07T15:40:45Z. Its paired findings and
+report are `requirements-quality-PRD-001-20261007T154045Z` and
+`PRD-001-quality-20261007T154045Z`. The actual verdict is
+`NEEDS_REVIEW`, with `validate_exit: APPROVED_WITH_COMMENTS` and
+`finalize_exit: NOT_EVALUATED`. Counts are 0 RISK, 4 CAUTION, 3 COVERED, and
+0 NOT_APPLICABLE. All 25 functional requirements have acceptance criteria
+and goal links (25/25 for each). The reviewer found no traceability defect.
+
+The four cautions preserve incomplete SMART evidence and NFR taxonomy
+coverage; they do not authorize adding unsupported targets or controls. The
+review confirmed that the vendor-scope, production data path, and per-brief
+cost questions satisfy the lab self-check as open questions. The transcript's
+under-two-minute generation target and under-45-minute Tier 1 preparation
+objective remain untested. Same-day service and the $1/$0.50 cost figures
+remain unaccepted. The 12-month incident lookback is distinct from retention;
+retention reconciliation remains open, and the current PRD has no
+12-month brief/audit retention rule.
+
+The separate Finalize review completed at 2026-10-07T15:44:25Z. Its paired
+findings and report are `requirements-quality-PRD-001-20261007T154425Z` and
+`PRD-001-quality-20261007T154425Z`. The actual verdict is `FAIL`, with
+`finalize_exit: BLOCKED`; counts are 3 RISK, 4 CAUTION, 3 COVERED, and
+0 NOT_APPLICABLE. The three HIGH RISK findings are the unmet SMART criteria
+for GOAL-001 through GOAL-003. The cautions cover unresolved decisions,
+untested stated objectives, unconfirmed pilot/operational readiness, and
+uncovered NFR categories. Traceability and transcript fidelity remain
+covered.
+
+No evidence in the transcript resolves the SMART gaps without inventing
+targets, time horizons, or achievability claims. No PRD content change was
+warranted by the Validate findings, and none was made to force a passing
+Finalize score. The user confirmed completion of the lab artifact with the
+deferred decisions preserved. That confirmation records lab completion only:
+the PRD remains a draft, and the actual Finalize gate remains blocked. No
+stakeholder sign-off, test result, pilot consent, or production readiness is
+claimed.
