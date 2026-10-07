@@ -2,9 +2,9 @@
 prd_id: "PRD-001"
 title: "policy-desk Vendor Renewal Risk Brief"
 description: "Transcript-grounded draft requirements, unresolved decisions, and user-confirmed pilot measurement definitions for the vendor renewal risk brief."
-status: "draft"
+status: "approved"
 version: "0.1.4"
-owners: ["Priya Raman (sponsor; PRD approval authority not established)"]
+owners: ["Priya Raman (sponsor)", "Robert (PRD sign-off authority; user-confirmed approval)"]
 reviewers: []
 created_date: "2026-10-07"
 last_updated: "2026-10-07"
@@ -33,7 +33,7 @@ The brief covers vendor tier, findings, exceptions, contract value and re-sourci
 
 Scheduled generation occurs 30 days before the policy-defined notice window opens. Business owners can also request a brief on demand. Both paths require TPRM analyst checking and correction before delivery to the business owner. Generation must take under two minutes; the human review service level remains unresolved. [E03, E09-E10, E12, E17]
 
-This remains a lab-scope draft, not an organizationally approved, implementation-ready, or production-ready specification. Vendor eligibility, production integration, cost ceiling, retention reconciliation, and several operating details remain open. A CSV prototype for one vendor and a possible Tier 1 card-processor pilot were discussed; neither establishes production architecture or a committed release date. [E10-E14, E18-E19]
+Robert approved this PRD as its stated sign-off authority on 2026-10-07. The approval does not establish pilot consent, implementation authorization, or production readiness. Vendor eligibility, production integration, cost ceiling, retention reconciliation, and several operating details remain open. A CSV prototype for one vendor and a possible Tier 1 card-processor pilot were discussed; neither establishes production architecture or a committed release date. [E10-E14, E18-E19]
 
 ## Product Context
 
@@ -461,7 +461,7 @@ All entries are Open. Where the transcript does not assign a decision owner, the
 | OQ-013 | What is the review/delivery SLA for scheduled and on-demand briefs? What length/readability/accessibility requirements apply?                                                            | Same-day tentative, not committed; no numeric length or accessibility standard; E07, E10 | Unassigned                                                                   |
 | OQ-014 | What is source-record citation syntax and link behavior, including spreadsheets, CSVs, and PDFs? Which Markdown rendering/paste checks are required?                                     | New record citations and paste requirement; E02, E09, E11                                | Unassigned                                                                   |
 | OQ-015 | Which exact policy sections, tier-dependent exception approvers, concentration-check conditions, and deadline/exception validity rules apply? How are policy/data conflicts handled?     | Policy lookup intended; complete mapping absent; E08, E17                                | Unassigned                                                                   |
-| OQ-016 | What review/sign-off roles and approval gate authorize this PRD and the pilot? What resources/budget are committed?                                                                      | Sponsor and actions named, formal approvals/resources not decided                        | Unassigned                                                                   |
+| OQ-016 | What review/sign-off roles and approval gate authorize the pilot? What resources/budget are committed?                                              | PRD sign-off recorded below; pilot authorization and resources remain undecided          | Unassigned                                                                   |
 
 ## Glossary
 
@@ -480,10 +480,12 @@ All entries are Open. Where the transcript does not assign a decision owner, the
 
 ### Approval Checklist
 
-* Sponsor is Priya Raman; no PRD approval is recorded.
-* Product owner, technical sign-off authority, quality lead, and required compliance approvers are not assigned.
-* Lena's pilot offer is tentative, not product sign-off.
-* Approval date is not established.
+* PRD sign-off authority: Robert (identified by the user as the sign-off authority).
+* Decision: Approved by Robert on 2026-10-07, as stated in the current conversation.
+* Approval scope: this PRD artifact and its transcript-grounded, lab-scoped requirements; open product decisions remain open.
+* Pilot consent, implementation authorization, and production readiness are not granted by this PRD approval.
+* Lena's pilot offer remains tentative; pilot authorization is not established.
+* No additional required reviewer roster or review decisions were specified; none are inferred.
 * Open decisions have not been waived.
 
 ### Waivers
@@ -494,12 +496,13 @@ None recorded. Template coverage defaults are authoring checks, not meeting-appr
 
 Earlier quality reviews recorded in `LAB-LOG.md` and the session state belong
 to earlier revisions and are not gate evidence for this version. Current
-revision gate results are recorded in those records. This PRD remains a lab
-draft; user confirmation of lab-artifact completion does not constitute
-organizational or production approval, implementation readiness, or test
-evidence. Vendor scope, production architecture, costs, pilot, source-field
-boundaries, telemetry/evidence detail, and Records retention reconciliation
-remain open. No backlog planning or tracker mutation was requested.
+revision gate results are recorded in those records. The PRD is approved by
+its stated sign-off authority for the documented requirements; this does not
+authorize a pilot or implementation and does not establish production
+readiness or test evidence. Vendor scope, production architecture, costs,
+pilot, source-field boundaries, telemetry/evidence detail, and Records
+retention reconciliation remain open. No backlog planning or tracker
+mutation was requested.
 
 ## Disclaimer
 
