@@ -560,3 +560,36 @@ lab-exercise choice because it is the reported available source. Only its
 consequences and safeguards changed. The ADR remains `proposed` and explicitly
 does not authorize production adoption. No **Create ADR** or **Create Plan**
 handoff was selected.
+
+## Exercise 5 — Performance and reliability targets
+
+Plan: `.copilot-tracking/performance-plans/2026-10-07-performance-slo-plan.md`.
+The renewal estimate is about 340 all-tier renewals per year, including about
+65 Tier 1/2 renewals; eligibility remains unresolved (PRD ASM-002/OQ-001;
+transcript 00:03:02). On-demand request volume is unknown and is not added to
+the forecast. Cost per brief remains open (PRD OQ-003).
+
+Alert on any generation that reaches 120 seconds after generation starts.
+This directly detects a breach of NFR-001/AC-034 while excluding analyst
+review time, and provides visibility into scheduled jobs that may threaten
+the notice-window runway. Agree alert severity, escalation ownership, and
+burn-rate policy before production; they are not established requirements.
+
+Unsourced assumptions and decisions still needed:
+
+* The plan's candidate 99% latency attainment and 28-day window are
+  assumptions; NFR-001 specifies under 120 seconds but leaves percentile and
+  measurement conditions open in OQ-008.
+* Queue, fetch, and retry time are included in the proposed accepted-trigger
+  measurement boundary, but the PRD does not settle this boundary.
+* Availability target and error budget are unknown. The 28-day reporting
+  window is provisional, not an approved SLO.
+* On-demand peak rate, concurrency, renewal-date clustering, source quotas,
+  and production saturation points are unknown. Load-test concurrency steps
+  and burst shapes are synthetic test inputs, not expected traffic.
+* Same-day analyst review was tentative; no review or delivery SLA is
+  established. Generation performance excludes review.
+
+Checkpoint: the plan defines the PRD's generation measurement, preserves
+cost as an open question, and separates the all-tier estimate from its
+Tier 1/2 subset. No load tests were run.
