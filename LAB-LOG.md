@@ -149,6 +149,93 @@ revisited later with Procurement and Legal (00:26:28, 00:27:04, 00:27:27,
   from a clear result is captured in FR-016 and AC-016, grounded in E16
   (00:32:20-00:32:43).
 
+## Exercise 2: Traceability audit
+
+Source: [renewal kickoff transcript](docs/meetings/renewal-kickoff-transcript.md).
+The classifications below assess whether the requirement itself is supported;
+they do not claim that the capability has been implemented or tested.
+
+### Requirement-to-transcript traceability
+
+| PRD requirement | Transcript evidence (timestamp) | Classification | Notes or open question |
+| --- | --- | --- | --- |
+| FR-001: Show vendor identity and tier | 00:01:38, 00:04:14 | confirmed | Source is the vendor record/master; production access path remains OQ-002. |
+| FR-002: Show open findings | 00:04:14-00:04:21 | confirmed | Findings register in the ProcureNet TPRM module. |
+| FR-003: Show open exceptions and expiry dates | 00:04:21-00:04:35 | confirmed | Include expiry dates that fall shortly after renewal. |
+| FR-004: Show current total contract value | 00:04:35-00:05:02 | confirmed | Full amendment/value history was withdrawn; CON-004 records the exclusion. |
+| FR-005: Show the four latest scorecards and open improvement plan first; do not compute ratings | 00:05:08-00:05:26 | confirmed | The no-computed-rating boundary is also CON-002. |
+| FR-006: Show Treasury flag, review date, and watch-list status | 00:05:29-00:05:45 | confirmed | Treasury Red is a blocker pending TPRC review; AC-010 covers blocker-first presentation. |
+| FR-007: Show prior-12-month incidents and notification-deadline compliance | 00:05:47-00:06:03 | confirmed | Full-term incident lookup remains available to the analyst; interval anchor remains OQ-007. |
+| FR-008: Show policy-required approval owners and deadlines with citations | 00:06:38-00:07:10 | confirmed | Detailed policy mappings and conflicts remain OQ-015. |
+| FR-009: Show the Tier 1/2 non-renewal exit-plan deadline, 60 days before expiry | 00:06:59-00:07:10 | confirmed | Policy-cited lookup, not model-derived policy. |
+| FR-010: Put evidenced renewal blockers at the top | 00:32:57-00:33:22 | confirmed | Do not turn blocker presentation into a renewal recommendation; CON-001. |
+| FR-011: Generate 30 days before the policy-defined notice window opens | 00:03:47-00:04:03; 00:36:12-00:37:01 | confirmed | The corrected tier windows and derived lead times are recorded in AC-011; do not use the superseded 90-day Tier 1 figure. |
+| FR-012: Allow an on-demand brief request | 00:10:30-00:10:53 | confirmed | Same-day service was only tentative; OQ-013. |
+| FR-013: Require analyst checking and correction before delivery on both paths | 00:12:46-00:13:47 | confirmed | Human-review workflow was agreed; a delivery SLA was not. |
+| FR-014: Provide Markdown suitable for ProcureNet case comments | 00:10:00-00:10:20 | confirmed | Exact rendering and link checks remain OQ-014. |
+| FR-015: Cite every substantive claim and omit unsupported claims | 00:01:38-00:02:27 | confirmed | Source-record click-through is specifically required. |
+| FR-016: Disclose stale/unavailable sources and known review date; never guess | 00:32:20-00:32:43 | confirmed | Prevents a blank or absent source from implying no issue. |
+| FR-017: Preserve generated and analyst-edited versions for correction measurement | 00:22:20-00:22:52; 00:24:14-00:25:12 | confirmed | Speaker correction at 00:25:12 is recorded in the PRD evidence notes; retention/detail remain OQ-004/OQ-011. |
+| FR-018: Identify the reviewer by name, not phone number | 00:42:04-00:42:21 | confirmed | Reviewer attribution at the bottom of the brief. |
+| FR-019: Flag renewal TCV above $250,000 when original award was below $250,000 | 00:04:35-00:05:02 | confirmed | Exact equality and missing-value behavior remain OQ-006. |
+| FR-020: Identify re-sourcing when the threshold is crossed without approved sole-source justification | 00:04:35-00:05:02 | confirmed | Source fields and missing-input behavior remain OQ-006. |
+| FR-021: Identify the business owner as renewal approver | 00:06:38-00:06:59 | confirmed | Does not authorize policy-desk or the analyst to make the decision. |
+| FR-022: Identify Critical/High findings without approved exceptions as blockers | 00:06:38-00:06:59 | confirmed | Detailed exception validity and policy mapping remain OQ-015. |
+| FR-023: Identify the applicable tier-dependent exception approver | 00:06:38-00:06:59 | confirmed | Exact tier mapping remains OQ-015. |
+| FR-024: Identify CRO escalation for Critical exceptions | 00:06:38-00:06:59 | confirmed | Exact policy citation remains subject to OQ-015 mapping. |
+| FR-025: Identify the TPRM Office concentration check for Tier 1 | 00:06:38-00:06:59 | confirmed | Exact check conditions remain OQ-015. |
+| NFR-001: Generate a brief in under 120 seconds, excluding review | 00:20:39-00:21:12 | confirmed | This is a stated target, not demonstrated feasibility; load, percentile, fetch boundary, and test conditions remain OQ-008. |
+| NFR-002: Exclude vendor/account and incident contact details; name reviewer, not phone | 00:06:03-00:06:35; 00:42:04-00:42:21 | confirmed | Specific excluded data is grounded in the prior disclosure incident; broader source-field and access boundaries remain OQ-010. |
+| NFR-003: Preserve evidence of source records presented to the model | 00:22:20-00:22:52; 00:24:53-00:25:12 | inferred | Necessary to answer Dana's audit scenario; Tom agreed existing retrieval/prompt logging would be extended. Source identity/version, format, and telemetry remain OQ-011. |
+| NFR-004: Keep Markdown usable when pasted into ProcureNet comments | 00:10:00-00:10:20 | confirmed | Exact rendering and acceptance checks remain OQ-014. |
+
+**Audit result:** 29 requirement rows (25 FRs and 4 NFRs); 28 confirmed,
+1 inferred, 0 needs-validation, and 0 invented. Needs-validation is not used
+to imply that a confirmed requirement lacks implementation evidence: the
+remaining uncertainties are called out in the row notes and corresponding
+open questions. No transcript-only capability assertion is supported solely
+by the README or the later pilot-measurement clarification.
+
+### Reverse traceability: Exercise 1 decisions
+
+| Exercise 1 decision or evidence | PRD disposition | Audit result |
+| --- | --- | --- |
+| Brief content, citation behavior, decision boundary, format, and output order | FR-001-FR-010, FR-014-FR-016; CON-001; AC-001-AC-016 | Present. |
+| Timing, on-demand path, mandatory analyst review, and provisional same-day response | FR-011-FR-013; OQ-013; AC-011-AC-013 | Present; no same-day SLA was promoted to a requirement. |
+| Performance target and uncertain measurement conditions | NFR-001; OQ-008; AC-034 | Present as target only; no performance result asserted. |
+| Privacy incident and reviewer attribution | NFR-002; FR-018; OQ-010; AC-018/AC-035 | Present; broader source-field/access policy remains open. |
+| What the model saw, analyst edits, and Records reconciliation | FR-017; NFR-003; OQ-004/OQ-011; AC-017/AC-033 | Present; the PRD adds no retention duration. |
+| Scorecard ownership, withdrawn amendment history, and withdrawn negotiation-email request | CON-002/CON-004; CON-003; DD-003/DD-004/DD-008 | Present; withdrawn requests are not active requirements. |
+| Threshold crossing and re-sourcing rule | FR-019/FR-020; OQ-006; AC-041/AC-042 | Present; exact equality, source values, and missing-input behavior remain open. |
+| Business-owner approval, blocker rules, CRO exception escalation, Tier 1 concentration check, and exit deadline | FR-008/FR-009/FR-021-FR-025; OQ-015; AC-008/AC-009/AC-036-AC-040 | Present; detailed policy mapping remains open. |
+| Four decisions explicitly deferred: vendor scope; production sources; cost per brief; retention/audit reconciliation | OQ-001 through OQ-004 | Present as open questions; none is resolved by this audit. |
+| Assigned prototype, export, logging, time-baseline, and pilot-confirmation actions | Dependencies and Meeting Actions; OQ-002/OQ-005/OQ-011 | Present as assignments or unresolved dependencies, not completed work. |
+| User-confirmed 30-day pilot measurement definitions | Product Goals, SMART matrix, and Success Metrics | Explicitly attributed to the user, not misrepresented as transcript evidence or pilot approval. |
+
+**Omissions corrected:** None. The reverse comparison found no Exercise 1
+decision omitted from the PRD. It confirmed that the two key implied
+requirements—human review before business-owner delivery and excluding
+sensitive contact details following the disclosure incident—are captured in
+FR-013 and NFR-002. The record-level model-input evidence requirement is also
+preserved as NFR-003, classified above as inferred and bounded by OQ-011.
+
+### Exercise 1 self-check
+
+* **Two implied requirements:** Human analyst review before delivery
+  (00:12:46-00:13:47; FR-013) and exclusion of sensitive contact details
+  (00:06:03-00:06:35; NFR-002) are captured. Record-level evidence of what
+  the model saw is an additional defensible inference (NFR-003).
+* **Withdrawn request:** Full amendment/value history was withdrawn at
+  00:04:35-00:05:02 and excluded by CON-004. Negotiation email drafting was
+  withdrawn from v1 at 00:26:28-00:27:37 and excluded by CON-003.
+* **Corrected number:** Tier 1 notice window is 120, not 90, days; other
+  windows are Tier 2 90, Tier 3 60, Tier 4 30 (00:36:12-00:36:43).
+  FR-011 and AC-011 use the corrected windows and trigger.
+* **Four explicitly deferred decisions:** Scope (OQ-001), production data
+  source (OQ-002), cost per brief (OQ-003), and Records/retention
+  reconciliation (OQ-004) remain open. Same-day turnaround remains
+  provisional in OQ-013.
+
 ## PRD validation
 
 The PRD Quality Reviewer completed its Validate-phase review on
