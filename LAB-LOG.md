@@ -487,3 +487,76 @@ resolves the prior sign-off blocker. The approval is not pilot consent,
 implementation authorization, or production readiness; independent review
 before organizational adoption remains a reviewer caution. No passing review
 baseline exists, so no regression result is asserted.
+
+## Policy Desk Architecture Diagram
+
+Source: [`infra/main.bicep`](infra/main.bicep). This is a static view of the
+declared deployment resources and dependencies.
+
+```text
++-------------------------- Resource Group -----------------------------+
+|                                                                        |
+|  +-------------------+      project and model endpoints                |
+|  | Container App     |------------------------------------+             |
+|  | policy-desk       |                                    |             |
+|  | internal :8000    |                                    v             |
+|  | managed identity  |       +----------- Foundry Account -----------+  |
+|  +---+-----------+---+       | policy-desk Project                   |  |
+|      |           |           | gpt-5-mini Deployment                 |  |
+|      |           |           | text-embedding-3-small Deployment      |  |
+|      |           |           +----------------------------------------+  |
+|      |           |                                                       |
+|      |           +-- writes audit --> +-------------------+              |
+|      |                                | Audit Blob Storage |              |
+|      |                                +-------------------+              |
+|      |                                                                    |
+|      | runs in                                                            |
+|      v                                                                    |
+|  +----------------------+       application logs       +---------------+ |
+|  | Container Apps       |----------------------------->| Log Analytics | |
+|  | Environment          |                              | Workspace     | |
+|  +----------------------+                              +---------------+ |
+|                                                                        |
+|  Identity role assignments:                                            |
+|  Container App -- Cognitive Services OpenAI User --> Foundry Account   |
+|  Container App -- Blob Data Contributor -----------> Audit Blob Storage |
++------------------------------------------------------------------------+
+```
+
+### Legend
+
+* `-->` indicates a runtime, logging, or access relationship.
+* The outer boundary is the resource group; the Foundry account is a nested
+  set of services deployed in that resource group.
+
+### Key relationships
+
+* The Container App uses the Foundry project endpoint and both model
+  deployments; the embedding deployment explicitly depends on the chat model.
+* The Container Apps Environment sends application logs to Log Analytics.
+* The Container App's managed identity receives the Cognitive Services OpenAI
+  User role at the Foundry account and Blob Data Contributor at the storage
+  account.
+* The app writes audit records to Blob Storage. The Bicep declares internal
+  ingress but does not specify the source of inbound traffic or a VNet.
+
+## Exercise 4 — Review decisions
+
+Review result: `.copilot-tracking/reviews/architecture/2026-10-07/vendor-source-decision-architecture-review.md`.
+Confirmed the four focus areas separately: reliability, security, cost, and
+operational burden. Each area has a finding. The findings below are accepted;
+acceptance records the review evidence, not production authorization or an
+unqualified selection of CSV as the production source.
+
+| Finding | Accept or reject | Reason | ADR change | Reviewer finding | Your decision | Evidence and reasoning | Consequence, status, or no change |
+|---|---|---|---|---|---|---|---|
+| Reliability | Accept | The export is available for a lab, but its freshness/schema and operational failure behavior are not defined or measured for production. | Consequences and safeguards only. | Schema drift, stale/missing data, retries, recovery, alerting, source delivery, and the under-two-minute target lack production evidence. | Accept the finding; keep CSV bounded to the lab until source contracts and end-to-end performance are validated. | ADR 0001 schema/freshness and generation criteria; PRD NFR-001, OQ-007, OQ-008, OQ-012; transcript 00:16:19-00:16:45 and 00:20:39-00:22:09; Bicep declares no source ingestion. | Added production prerequisites for feed contracts, monitoring, retry/recovery, alerting, and measured generation time. Decision remains nightly CSV for lab; status remains `proposed`. |
+| Security | Accept | The prior export leak and unknown vendor-master lineage make exposure risk material; existing Bicep controls do not govern the future CSV path. | Consequences and safeguards only. | Field boundary, export lineage, source authorization, source-specific access, and retention of model-input/edit evidence are unresolved. | Accept the finding; do not process real vendor data until data-owner approval and an approved allowlist are in place. | PRD NFR-002 and OQ-010/OQ-011; transcript 00:06:03-00:06:35, 00:15:15-00:18:09, 00:22:20-00:23:56; Bicep identity is scoped to Foundry and audit storage, with no vendor-source integration. | Added source-lineage, authorization, allowlist, and prohibited-contact guardrails. No production access was authorized; decision and status unchanged. |
+| Cost | Accept | No unit or annual cost is measured, and neither meeting figure was approved as a ceiling. | Consequences and safeguards only. | $1 and $0.50 per brief are proposals; volumes and eligibility are unsettled; infrastructure, model, retries, audit/logging, and source costs lack an estimate. | Accept the finding; require measured unit/annual costs and an approved volume and ceiling before production adoption. | PRD OQ-003 and scope questions; transcript 00:20:39-00:22:09; Bicep specifies deployments, capacity, storage, and logging retention but no cost model. | Added a cost measurement prerequisite across model/embedding use, retries, infrastructure, audit/logging, source charges, and volume. No ceiling or production commitment asserted; decision/status unchanged. |
+| Operational Burden | Accept | The file is practical for a lab, but production support work has no named owner or defined operating procedure. | Consequences and safeguards only. | Feed delivery, schema change, freshness, retries, reruns, analyst workflow, and evidence retention need ownership and runbooks; none is established by Bicep. | Accept the finding; require named source/service owners and operating procedures before production adoption. | PRD OQ-012 and Data dependencies; transcript 00:16:19-00:16:45, 00:32:20-00:32:43, and 00:41:23-00:41:52; ADR 0001 states these integration/operations are not provisioned. | Added operational ownership/runbook prerequisites. The lab-only choice remains proposed; no status transition or production authorization. |
+
+The decision itself did not change: nightly Coupa CSV remains the proposed
+lab-exercise choice because it is the reported available source. Only its
+consequences and safeguards changed. The ADR remains `proposed` and explicitly
+does not authorize production adoption. No **Create ADR** or **Create Plan**
+handoff was selected.

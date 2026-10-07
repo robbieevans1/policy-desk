@@ -106,6 +106,31 @@ The deciding driver is **available data access without waiting for the delayed A
 * Bad, because the export's described fields do not establish coverage of current findings or scorecards; those require separate approved ProcureNet access and must not be implied by this decision.
 * Neutral, because contract clause text and page-level PDF citations are not obtained through this selected CSV path.
 
+### Review findings and disposition (2026-10-07)
+
+The independent review findings for reliability, security, cost, and operational
+burden are accepted. They refine the consequences and safeguards of this
+proposal; they do not change the selected lab source, the `proposed` status, or
+the decision's explicit limit against production authorization. Do not process
+real vendor data for the lab until the export path and permitted fields are
+approved by the relevant data owner.
+
+* Reliability: the fail-visible schema and freshness controls remain required,
+  and production use additionally depends on defined freshness and schema
+  contracts, feed monitoring, retry/recovery behavior, alerting, and measured
+  end-to-end generation time.
+* Security: confirm export lineage and source authorization, enforce a
+  minimum-field allowlist, and exclude prohibited contact fields before real
+  vendor data enters the brief or model input. Existing Azure identity and
+  storage controls do not establish these source-specific controls.
+* Cost: no unit or annual ceiling is approved. Measure model and embedding
+  usage, retries, audit/log retention, infrastructure allocation, source
+  charges, and the agreed brief volume before production adoption.
+* Operational burden: name source and service owners and define the runbook
+  for feed delivery, schema changes, stale or missing input, retries,
+  recovery, reruns, analyst review/delivery, and evidence retention before
+  production adoption.
+
 ## Risks and Mitigations
 
 | Risk | Mitigation / required follow-up |
@@ -113,9 +138,11 @@ The deciding driver is **available data access without waiting for the delayed A
 | Export schema changes or malformed files | Validate required columns and types at ingestion; reject incompatible input visibly and notify the operator rather than silently mapping it. Exact schema/version and failure operations remain implementation work. |
 | Snapshot is stale or missing | Capture export time and source freshness metadata; label stale/unavailable data explicitly and do not guess. Freshness thresholds remain to be defined. |
 | CSV claims cannot be traced to source rows | Preserve export identity and row/record reference in generated evidence; define citation syntax and link behavior before claiming click-through support. |
-| Contact fields leak into model input or brief | Use an explicit field allowlist and exclude vendor account-manager phone numbers and incident contact details. Broader field boundary and access controls remain open. |
+| Contact fields leak into model input or brief | Before processing real vendor data, confirm export lineage and data-owner authorization; use an approved field allowlist and exclude vendor account-manager phone numbers and incident contact details. Broader field boundary and source-specific access controls remain open. |
 | Findings and scorecards appear covered when they are not | Treat ProcureNet findings and scorecards as separate access dependencies; omit unsupported claims and disclose unavailable sources. The Coupa export must not be represented as supplying those records. |
 | Generation exceeds the PRD target | Measure end-to-end generation under defined conditions; this ADR does not assert that local ingestion meets the target. |
+| Feed operations or evidence retention fail without a clear owner | Name source and service owners; define delivery, monitoring, alerting, retry/recovery, rerun, analyst handoff, and evidence-retention procedures. These are production prerequisites and are not implemented or authorized by this lab decision. |
+| Costs exceed an assumed per-brief or annual budget | Treat the discussed $1 and $0.50 values as unapproved proposals; measure model, embedding, retry, infrastructure, logging/audit, and source costs against approved volume before setting a production ceiling. |
 
 ## Rollback / Exit Strategy
 
